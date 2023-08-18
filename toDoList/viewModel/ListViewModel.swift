@@ -7,21 +7,47 @@
 
 import Foundation
 
+
+/*
+ CRUD FUNCTIONS:
+ 
+ Create
+ Read
+ Update
+ Delete
+ */
 class ListViewModels: ObservableObject{
     
-    @Published var items: [ItemModel] = []
+    @Published var items: [ItemModel] = [] {
+        //типо при каждом изменении обекта сохраняем обекты
+        didSet{
+            saveItems()
+        }
+    }
+    
+    
+    let itemsKey = "items_list"
     
     init(){
         fetchData()
     }
     
+    //лучше не хранить данные в userDefaults но туть моня)
     func fetchData(){
-        let newItems: [ItemModel]=[
-            ItemModel(tittle: "first", isComlpited: false),
-            ItemModel(tittle: "second", isComlpited: true),
-            ItemModel(tittle: "three", isComlpited: false)
-        ]
-        items.append(contentsOf: newItems)
+//        let newItems: [ItemModel]=[
+//            ItemModel(tittle: "first", isComlpited: false),
+//            ItemModel(tittle: "second", isComlpited: true),
+//            ItemModel(tittle: "three", isComlpited: false)
+//        ]
+//        items.append(contentsOf: newItems)
+        
+        guard
+            let data = UserDefaults.standard.data(forKey: itemsKey),
+            let savedItems = try? JSONDecoder().decode([ItemModel].self, from: data)
+        else { return }
+
+        self.items = savedItems
+        
     }
     
     func deleteItem(indexSet: IndexSet){
@@ -52,6 +78,13 @@ class ListViewModels: ObservableObject{
 //            //run code
 //        }
         
+    }
+    
+    
+    func saveItems() {
+        if let encodedData = try? JSONEncoder().encode(items) {
+            UserDefaults.standard.set(encodedData, forKey: itemsKey)
+        }
     }
     
     

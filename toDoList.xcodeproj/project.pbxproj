@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BD522172A8F9A9E002AB218 /* NoItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD522162A8F9A9E002AB218 /* NoItemsView.swift */; };
 		5BE3C4312A839C6E004D88F3 /* toDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3C4302A839C6E004D88F3 /* toDoListApp.swift */; };
 		5BE3C4332A839C6E004D88F3 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3C4322A839C6E004D88F3 /* ListView.swift */; };
 		5BE3C4352A839C6F004D88F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BE3C4342A839C6F004D88F3 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BD522162A8F9A9E002AB218 /* NoItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoItemsView.swift; sourceTree = "<group>"; };
 		5BE3C42D2A839C6E004D88F3 /* toDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = toDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE3C4302A839C6E004D88F3 /* toDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toDoListApp.swift; sourceTree = "<group>"; };
 		5BE3C4322A839C6E004D88F3 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -81,8 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				5BE3C4322A839C6E004D88F3 /* ListView.swift */,
-				5BE3C43F2A839D75004D88F3 /* listRowView.swift */,
+				5BD522162A8F9A9E002AB218 /* NoItemsView.swift */,
 				5BE3C4412A83A072004D88F3 /* addNotsView.swift */,
+				5BE3C43F2A839D75004D88F3 /* listRowView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				5BE3C4482A83AB69004D88F3 /* ListViewModel.swift in Sources */,
 				5BE3C4402A839D75004D88F3 /* listRowView.swift in Sources */,
 				5BE3C4332A839C6E004D88F3 /* ListView.swift in Sources */,
+				5BD522172A8F9A9E002AB218 /* NoItemsView.swift in Sources */,
 				5BE3C4312A839C6E004D88F3 /* toDoListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

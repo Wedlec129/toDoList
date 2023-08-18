@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct addNotsView: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -20,34 +21,34 @@ struct addNotsView: View {
     
     
     var body: some View {
-        NavigationView(){
-            ScrollView{
-                VStack{
-                    TextField("type something here", text: $textFiledText)
-                        .padding(.horizontal)
+        
+        ScrollView{
+            VStack{
+                TextField("type something here", text: $textFiledText)
+                    .padding(.horizontal)
+                    .frame(height: 55)
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(10)
+                
+                Button(action: saveButton, label: {
+                    Text("Save")
+                        .foregroundColor(.white)
+                        .font(.headline)
                         .frame(height: 55)
-                        .background(Color(.secondarySystemBackground))
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor)
                         .cornerRadius(10)
-                    
-                    Button(action: saveButton, label: {
-                        Text("Save")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                            .frame(height: 55)
-                            .frame(maxWidth: .infinity)
-                            .background(textIsApproprte() ? Color.accentColor : Color.secondary)
-                            .cornerRadius(10)
-                    })
-                   
-                    
-                }
-                .padding(14)
+                })
+                
+                
             }
-            
-            .navigationTitle("Add an item")
-            .alert(isPresented: $showAlert, content: getAlert )
+            .padding(14)
         }
+        
+        .navigationTitle("Add an item")
+        .alert(isPresented: $showAlert, content: getAlert )
     }
+    
     
     func saveButton(){
         if textIsApproprte(){
@@ -76,7 +77,21 @@ struct addNotsView: View {
 
 struct addNotsView_Previews: PreviewProvider {
     static var previews: some View {
-        addNotsView()
+        
+        Group {
+            NavigationView {
+                addNotsView()
+            }
+            .preferredColorScheme(.light)
+            .navigationViewStyle(StackNavigationViewStyle())
             .environmentObject(ListViewModels())
+            NavigationView {
+                addNotsView()
+            }
+            .preferredColorScheme(.dark)
+            .navigationViewStyle(StackNavigationViewStyle())
+            .environmentObject(ListViewModels())
+
+        }
     }
 }

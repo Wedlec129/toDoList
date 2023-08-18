@@ -8,7 +8,9 @@
 import SwiftUI
 import Foundation
 
-struct ItemModel: Identifiable {
+// Immutable Struct has only 'let' constants
+//codeble is decode + encode
+struct ItemModel: Identifiable, Codable{
     let id :String
     let tittle :String
     let isComlpited :Bool
