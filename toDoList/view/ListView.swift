@@ -7,22 +7,27 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ListView: View {
     
-
+    
     
     @EnvironmentObject var listViewModel: ListViewModels
     
     var body: some View {
-       
+        
         NavigationView(){
             List{
                 ForEach(listViewModel.items) { item in
                     listRowView(item: item)
+                        .onTapGesture {
+                            withAnimation(.linear){
+                                listViewModel.updateItem(item: item)
+                                
+                            }
+                        }
                 }
                 .onDelete(perform: listViewModel.deleteItem)
                 .onMove(perform: listViewModel.moveItem)
-                
                 
             }
             .navigationBarItems(
@@ -32,13 +37,14 @@ struct ContentView: View {
             )
             .navigationTitle("Todo List")
         }
-       
     }
+    
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        
+        ListView()
             .environmentObject(ListViewModels())
     }
 }

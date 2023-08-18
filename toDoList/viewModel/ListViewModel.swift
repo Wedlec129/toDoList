@@ -16,7 +16,7 @@ class ListViewModels: ObservableObject{
     }
     
     func fetchData(){
-        var newItems: [ItemModel]=[
+        let newItems: [ItemModel]=[
             ItemModel(tittle: "first", isComlpited: false),
             ItemModel(tittle: "second", isComlpited: true),
             ItemModel(tittle: "three", isComlpited: false)
@@ -31,7 +31,28 @@ class ListViewModels: ObservableObject{
         items.move(fromOffsets: from, toOffset: to)
     }
     func addItem(tittle: String){
-        var newItem = ItemModel(tittle: tittle, isComlpited: false)
+        let newItem = ItemModel(tittle: tittle, isComlpited: false)
         items.append(newItem)
     }
+    
+    func updateItem(item: ItemModel){
+         
+        //$0 это то на чем зацикливаемся
+        if let index = items.firstIndex(where: { $0.id == item.id}){
+            items[index] = item.updateComplecation()
+           // print(index)
+        }
+
+        
+        
+        //тоже самое что и up
+//        if let index = items.firstIndex { (existingItem) -> Bool in
+//            return existingItem.id == item.id
+//        } {
+//            //run code
+//        }
+        
+    }
+    
+    
 }

@@ -9,11 +9,15 @@ import SwiftUI
 
 struct addNotsView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
+    
     @EnvironmentObject var listViewModel: ListViewModels
     @State var textFiledText = ""
     
+    @State var alertTittle: String = ""
+    @State var showAlert: Bool = false
     
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView(){
@@ -41,6 +45,7 @@ struct addNotsView: View {
             }
             
             .navigationTitle("Add an item")
+            .alert(isPresented: $showAlert, content: getAlert )
         }
     }
     
@@ -52,13 +57,20 @@ struct addNotsView: View {
         
     }
     func textIsApproprte() -> Bool {
-        if textFiledText.count > 3 && textFiledText.first != " " {
-            return true
-        }
-        else{
+        if textFiledText.count < 3 {
+            alertTittle = "you need write minimum 3 charactrs long! "
+            showAlert.toggle()
             return false
         }
+        else{
+            return true
+        }
     }
+    
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTittle))
+    }
+    
     
 }
 

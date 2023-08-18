@@ -9,8 +9,8 @@ import SwiftUI
 
 struct listRowView: View {
     
-    @State public var item: ItemModel
-   
+    let item: ItemModel
+ 
     
     var body: some View {
         HStack{
@@ -28,8 +28,11 @@ struct listRowView: View {
 struct listRowView_Previews: PreviewProvider {
     static var previews: some View {
        
-               
-        listRowView(item:ItemModel(tittle: "test", isComlpited: false))
+        Group{
+            listRowView(item:ItemModel(tittle: "test", isComlpited: true))
+            listRowView(item:ItemModel(tittle: "test", isComlpited: false))
+        }
+        .previewLayout(.sizeThatFits)
            
       
     }

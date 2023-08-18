@@ -14,7 +14,7 @@ struct toDoListApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ListView()
                 .environmentObject(listViewModel)
         }
     }
